@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
     {
         long frame_start_time = getCurrentTime();
         game.update();
-        sleep(frame_start_time + MS_PER_FRAME - getCurrentTime());
+        //sleep(frame_start_time + MS_PER_FRAME - getCurrentTime());
     }
 
     return 0;

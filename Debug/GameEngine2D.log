@@ -1,12 +1,19 @@
-﻿Build started 29/05/2018 0:19:07.
+﻿Build started 29/05/2018 22:47:25.
      1>Project "E:\C++\GameEngine2D\GameEngine2D.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\VisualStudio\VC\bin\CL.exe /c /IE:\C++\SDL2\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         E:\VisualStudio\VC\bin\CL.exe /c /IE:\C++\SDL2\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp InputSystem.cpp Main.cpp
+         InputSystem.cpp
+     1>e:\c++\gameengine2d\inputsystem.cpp(8): warning C4800: 'Uint32': forcing value to bool 'true' or 'false' (performance warning)
+         Game.cpp
+         Generating Code...
+     1>e:\c++\gameengine2d\inputsystem.cpp(69): warning C4172: returning address of local variable or temporary: ret
+         Compiling...
          Main.cpp
+         Generating Code...
        Link:
          E:\VisualStudio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\C++\GameEngine2D\Debug\GameEngine2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:E:\C++\SDL2\lib\x86 SDL2.lib SDL2main.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\C++\GameEngine2D\Debug\GameEngine2D.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\C++\GameEngine2D\Debug\GameEngine2D.lib" /MACHINE:X86 Debug\ECS.obj
          Debug\Game.obj
-         Debug\Input.obj
+         Debug\InputSystem.obj
          Debug\Main.obj
          Debug\RenderSystem.obj
          GameEngine2D.vcxproj -> E:\C++\GameEngine2D\Debug\GameEngine2D.exe
@@ -14,4 +21,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.44
+Time Elapsed 00:00:03.79

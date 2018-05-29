@@ -49,7 +49,7 @@ class Entity
 {
 public:
     uint  id;
-    bool active  = false;
+    bool active  = true;
 
     std::vector<std::unique_ptr<Component>> components;
     ComponentArray                          componentArray;

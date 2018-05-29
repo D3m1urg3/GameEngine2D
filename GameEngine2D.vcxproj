@@ -127,7 +127,7 @@
   <ItemGroup>
     <ClCompile Include="ECS.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
   </ItemGroup>
@@ -136,7 +136,8 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="ECS.h" />
-    <ClInclude Include="Input.h" />
+    <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="InputSystem.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="TransformComponent.h" />
