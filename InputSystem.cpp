@@ -10,6 +10,7 @@ InputSystem::InputSystem(EntityManager& em)
     {
         SDL_Init(SDL_INIT_EVERYTHING);
     }
+    activate();
 }
 
 void InputSystem::update()
@@ -19,8 +20,7 @@ void InputSystem::update()
     // Update Entities 
     if (lastKeyDown != NONE_KEY || lastKeyUp != NONE_KEY)
     {
-        uint entityCount = emanager->entityCount();
-        for (uint id = 0; id < entityCount; ++id)
+        for (uint id = 0, entityCount = emanager->entityCount(); id < entityCount; ++id)
         {
             if (emanager->isEntityActive(id) && emanager->entityHasComponent<InputComponent>(id))
             {

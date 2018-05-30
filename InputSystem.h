@@ -19,7 +19,7 @@ public:
     InputSystem(EntityManager& em);
     ~InputSystem() {}
 
-    void update();
+    void update() override;
 };
 
 

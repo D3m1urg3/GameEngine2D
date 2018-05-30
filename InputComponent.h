@@ -1,5 +1,6 @@
 #ifndef __INPUT_COMPONENT__
 #define __INPUT_COMPONENT__
+
 #include "ECS.h"
 
 enum KeyboardKeys

@@ -30,6 +30,9 @@
     <ClCompile Include="InputSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AnimationSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -57,6 +60,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InputComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

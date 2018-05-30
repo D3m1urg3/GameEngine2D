@@ -24,7 +24,7 @@ private:
 
 
 public:
-    RenderSystem(EntityManager& em);
+    RenderSystem(EntityManager& em, std::string windowName, uint xpos, uint ypos, uint xsize, uint ysize);
     ~RenderSystem();
 
     bool            initWindowAndScreen(const std::string name, uint xpos, uint ypos, uint xsize, uint ysize);

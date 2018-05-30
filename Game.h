@@ -6,10 +6,16 @@
 #include "Globals.h"
 #include "ECS.h"
 #include "SDL.h"
-#include "InputSystem.h"
 #include <windows.h>
 
+#include "TransformComponent.h"
+#include "InputComponent.h"
+#include "SpriteComponent.h"
+#include "AnimationComponent.h"
+
+#include "InputSystem.h"
 #include "RenderSystem.h"
+#include "AnimationSystem.h"
 
 enum GameStatus
 {
@@ -23,18 +29,21 @@ class Game
 private:
     GameStatus status;
 
-    EntityManager emanager;
-
     // Entities
+    EntityManager emanager;
     Entity* inputListener;
 
     // Systems
-    InputSystem*    inputSystem;
-    RenderSystem*   renderSystem;
     std::vector<System*> systems;
 
-    // Variables
+    // Others
     KeyboardKeys currentKey;
+    // ------------------------------------
+    // Configuration and utility functions
+
+    void configure();
+    void initEntityAnimation(uint entityID, std::string fullfilename, uint init_x, uint init_y, uint xsize, uint ysize, uint framesAmount);
+
 public:
     Game();
     ~Game();

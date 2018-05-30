@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationSystem.cpp" />
     <ClCompile Include="ECS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputSystem.cpp" />
@@ -132,6 +133,8 @@
     <ClCompile Include="RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationComponent.h" />
+    <ClInclude Include="AnimationSystem.h" />
     <ClInclude Include="ECS_original.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Globals.h" />
@@ -139,6 +142,7 @@
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="RenderSystem.h" />
+    <ClInclude Include="SDLUtils.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="TransformComponent.h" />
   </ItemGroup>

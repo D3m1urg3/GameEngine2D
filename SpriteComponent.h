@@ -6,13 +6,19 @@
 #include <string>
 #include "Globals.h"
 
-class SpriteComponent : public Component
+struct Sprite
 {
-public:
-    bool isLoaded = false;
+    bool            isInit      = false;
     SDL_Surface*    sdl_surface = nullptr;
     SDL_Rect*       src         = nullptr;
     SDL_Rect*       dst         = nullptr;
+};
+
+class SpriteComponent : public Component
+{
+public:
+    bool    isLoaded = false;
+    Sprite* sprite   = nullptr;
 };
 
 #endif
