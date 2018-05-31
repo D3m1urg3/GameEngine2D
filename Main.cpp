@@ -22,9 +22,9 @@ long getCurrentTime()
 {
     SYSTEMTIME time;
     GetSystemTime(&time);
-    LONG time_ms = (time.wSecond * 1000) + time.wMilliseconds;
+    LONG timems = (time.wSecond * 1000) + time.wMilliseconds;
 
-    return time_ms;
+    return timems;
 }
 
 void sleep(long ms)

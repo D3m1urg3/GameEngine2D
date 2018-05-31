@@ -60,17 +60,13 @@ void Game::configure()
 
 void Game::initEntityAnimation(uint entityID, std::string fullfilename, uint init_x, uint init_y, uint xsize, uint ysize, uint framesAmount)
 {
-    AnimationComponent& animationCmp = emanager.getComponentFromEntity<AnimationComponent>(entityID);
-
     // Load surface from BMP file
-    if (animationCmp.surface != nullptr)
-    {
-        SDL_FreeSurface(animationCmp.surface);
-    }
     SDL_Surface* surface = SDL_LoadBMP(fullfilename.c_str());
 
     // Init animation sprites
-    animationCmp.surface = surface;
+    Animation* animation = new Animation;
+    animation->name = "test animation";
+    animation->surface = surface;
     for (uint i = 0; i < framesAmount; ++i)
     {
         Sprite* sprite = new Sprite();
@@ -78,17 +74,22 @@ void Game::initEntityAnimation(uint entityID, std::string fullfilename, uint ini
         sprite->dst = new SDL_Rect;
 
         sprite->sdl_surface = surface;
-        sprite->src->x = init_x + i*xsize;
-        sprite->src->y = init_y;
-        sprite->src->w = xsize;
-        sprite->src->h = ysize;
-        sprite->dst->w = xsize;
-        sprite->dst->h = ysize;
-        sprite->isInit = true;
+        sprite->src->x      = init_x + i*xsize;
+        sprite->src->y      = init_y;
+        sprite->src->w      = xsize;
+        sprite->src->h      = ysize;
+        sprite->dst->w      = xsize;
+        sprite->dst->h      = ysize;
+        sprite->isInit      = true;
 
-        animationCmp.sprites.push_back(sprite);
+        animation->frames.push_back(sprite);
     }
+
+    AnimationComponent& animationCmp = emanager.getComponentFromEntity<AnimationComponent>(entityID);
+    animationCmp.currentAnimation = animation;
+    animationCmp.animations.push_back(animation);
 }
+
 bool Game::destroy()
 {
     for (auto& systemPtr : systems)

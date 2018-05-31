@@ -17,7 +17,18 @@ RenderSystem::RenderSystem(EntityManager& em, std::string windowName, uint xpos,
 
 RenderSystem::~RenderSystem()
 {
-    freeSDLSurface(screen);
+    for (uint id = 0, entityCount = emanager->entityCount(); id < entityCount; ++id)
+    {
+        if (emanager->isEntityActive(id) && emanager->entityHasComponent<SpriteComponent>(id))
+        {
+            SpriteComponent& spriteCmp = emanager->getComponentFromEntity<SpriteComponent>(id);
+            SDL_FreeSurface(spriteCmp.sprite->sdl_surface);
+            delete spriteCmp.sprite->src;
+            delete spriteCmp.sprite->dst;
+            delete spriteCmp.sprite;
+        }
+    }
+    SDL_FreeSurface(screen);
     SDL_DestroyWindow(window);
     SDL_Quit;
 }
@@ -27,15 +38,6 @@ bool RenderSystem::initWindowAndScreen(const std::string name, uint xpos, uint y
     window = SDL_CreateWindow(name.c_str(), xpos, ypos, xsize, ysize, SDL_WINDOW_SHOWN);
     screen = SDL_GetWindowSurface(window);
     return window != nullptr && screen != nullptr;
-}
-
-void RenderSystem::freeSDLSurface(SDL_Surface* surface)
-{
-    if (surface != nullptr)
-    {
-        SDL_FreeSurface(surface);
-        surface = nullptr;
-    }
 }
 
 void RenderSystem::draw(SpriteComponent& c)

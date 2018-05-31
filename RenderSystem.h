@@ -31,9 +31,6 @@ public:
 
     void            update() override;
     void            draw(SpriteComponent& c);
-
-    SDL_Surface*    loadSDLSurfaceFromBMPFile(std::string str);
-    void            freeSDLSurface(SDL_Surface* surface);
 };
 
 
