@@ -1,13 +1,13 @@
 #ifndef __ECS__
 #define __ECS__
 
+#include "Globals.h"
 #include <cstddef>
 #include <vector>
 #include <array>
 #include <memory>
 #include <bitset>
 #include <algorithm>
-#include "Globals.h"
 
 // ComponentTypeID Generator
 
@@ -69,6 +69,7 @@ public:
     Entity&                 addEntity       ();
     inline uint             entityCount     ()                      { return entities.size(); }
     inline Entity&          getEntity       (const uint id)         { return *entities.at(id); }
+    inline const Entity&    getEntity       (const uint id) const   { return *entities.at(id); }
     bool                    isEntityActive  (const uint id);
     void                    disableEntity   (const uint id);
     void                    enableEntity    (const uint id);
@@ -103,9 +104,9 @@ public:
     }
 
     template <typename T> 
-    bool entityHasComponent(uint entityID) 
+    bool entityHasComponent(uint entityID) const
     {
-        Entity& e = getEntity(entityID);
+        const Entity& e = getEntity(entityID);
         return e.componentBitSet[getComponentTypeID<T>()];
     }
 };

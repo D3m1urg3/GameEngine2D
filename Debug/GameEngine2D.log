@@ -1,27 +1,36 @@
-﻿Build started 31/05/2018 20:33:58.
+﻿Build started 14/06/2018 22:47:40.
      1>Project "E:\C++\GameEngine2D\GameEngine2D.vcxproj" on node 2 (Build target(s)).
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Bomberman.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
-         E:\VisualStudio\VC\bin\CL.exe /c /IE:\C++\SDL2\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AnimationSystem.cpp Game.cpp Main.cpp RenderSystem.cpp
+         E:\VisualStudio\VC\bin\CL.exe /c /IE:\C++\SDL2\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp Main.cpp RenderSystem.cpp
          RenderSystem.cpp
-     1>e:\c++\gameengine2d\rendersystem.cpp(9): warning C4800: 'Uint32': forcing value to bool 'true' or 'false' (performance warning)
-     1>e:\c++\gameengine2d\rendersystem.cpp(33): warning C4551: function call missing argument list
-         Main.cpp
-         Game.cpp
-         AnimationSystem.cpp
+     1>e:\c++\gameengine2d\rendersystem.h(7): warning C4099: 'SDL_Window': type name first seen using 'struct' now seen using 'class'
+         e:\c++\sdl2\include\sdl_video.h(90): note: see declaration of 'SDL_Window'
+     1>e:\c++\gameengine2d\rendersystem.h(8): warning C4099: 'SDL_Surface': type name first seen using 'struct' now seen using 'class'
+         e:\c++\sdl2\include\sdl_surface.h(70): note: see declaration of 'SDL_Surface'
+     1>e:\c++\gameengine2d\rendersystem.cpp(35): warning C4551: function call missing argument list
          Generating Code...
-     1>e:\c++\gameengine2d\animationsystem.cpp(42): warning C4715: 'AnimationSystem::getAnimation': not all control paths return a value
+         Compiling...
+         Game.cpp
+     1>e:\c++\gameengine2d\rendersystem.h(7): warning C4099: 'SDL_Window': type name first seen using 'struct' now seen using 'class'
+         e:\c++\sdl2\include\sdl_video.h(90): note: see declaration of 'SDL_Window'
+     1>e:\c++\gameengine2d\rendersystem.h(8): warning C4099: 'SDL_Surface': type name first seen using 'struct' now seen using 'class'
+         e:\c++\sdl2\include\sdl_surface.h(70): note: see declaration of 'SDL_Surface'
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Main.cpp
        Link:
-         E:\VisualStudio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\C++\GameEngine2D\Debug\GameEngine2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:E:\C++\SDL2\lib\x86 SDL2.lib SDL2main.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\C++\GameEngine2D\Debug\GameEngine2D.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\C++\GameEngine2D\Debug\GameEngine2D.lib" /MACHINE:X86 Debug\AnimationSystem.obj
+         E:\VisualStudio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\C++\GameEngine2D\Debug\GameEngine2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:E:\C++\SDL2\lib\x86 SDL2.lib SDL2main.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\C++\GameEngine2D\Debug\GameEngine2D.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\C++\GameEngine2D\Debug\GameEngine2D.lib" /MACHINE:X86 Debug\AnimatoinSystem.obj
          Debug\ECS.obj
          Debug\Game.obj
          Debug\InputSystem.obj
          Debug\Main.obj
          Debug\RenderSystem.obj
+         Debug\SDLUtils.obj
+         LINK : E:\C++\GameEngine2D\Debug\GameEngine2D.exe not found or not built by the last incremental link; performing full link
             Creating library E:\C++\GameEngine2D\Debug\GameEngine2D.lib and object E:\C++\GameEngine2D\Debug\GameEngine2D.exp
          GameEngine2D.vcxproj -> E:\C++\GameEngine2D\Debug\GameEngine2D.exe
      1>Done Building Project "E:\C++\GameEngine2D\GameEngine2D.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.39
+Time Elapsed 00:00:02.34

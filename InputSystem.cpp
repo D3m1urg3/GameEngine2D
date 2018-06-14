@@ -1,3 +1,5 @@
+
+#include "Globals.h"
 #include "InputSystem.h"
 
 InputSystem::InputSystem(EntityManager& em)
@@ -5,7 +7,7 @@ InputSystem::InputSystem(EntityManager& em)
 {
     // Init SDL if it is not already 
     Uint32 sdl_init_mask = SDL_INIT_EVERYTHING;
-    bool is_sdl_video_init = sdl_init_mask & SDL_INIT_VIDEO;
+    Uint32 is_sdl_video_init = sdl_init_mask & SDL_INIT_VIDEO;
     if (!is_sdl_video_init)
     {
         SDL_Init(SDL_INIT_EVERYTHING);
@@ -16,6 +18,8 @@ InputSystem::InputSystem(EntityManager& em)
 void InputSystem::update()
 {       
     readKeyboardInput();
+
+    // TODO: translate keys to commands from a datafile  
 
     // Update Entities 
     if (lastKeyDown != NONE_KEY || lastKeyUp != NONE_KEY)
@@ -53,7 +57,7 @@ void InputSystem::readKeyboardInput()
     }
 }
 
-const KeyboardKeys& InputSystem::translateKey(SDL_Keycode k)
+KeyboardKeys& InputSystem::translateKey(const SDL_Keycode& k) const
 {
     KeyboardKeys ret = NONE_KEY;
     switch (k)

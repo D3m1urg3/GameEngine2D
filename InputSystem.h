@@ -1,11 +1,11 @@
 #ifndef __INPUT_SYSTEM__
 #define __INPUT_SYSTEM__
 
-#include "ECS.h"
 #include "SDL.h"
-#include "Globals.h"
-
+#include "ECS.h"
 #include "InputComponent.h"
+
+class EntityManager;
 
 class InputSystem : public System
 {
@@ -14,7 +14,7 @@ private:
     KeyboardKeys lastKeyUp;
 
     void readKeyboardInput();
-    const KeyboardKeys& translateKey(SDL_Keycode k);
+    KeyboardKeys& translateKey(const SDL_Keycode& k) const;
 public:
     InputSystem(EntityManager& em);
     ~InputSystem() {}

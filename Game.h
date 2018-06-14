@@ -2,20 +2,10 @@
 #define __GAME__
 
 #include <vector>
-#include <memory>
-#include "Globals.h"
 #include "ECS.h"
-#include "SDL.h"
-#include <windows.h>
 
-#include "TransformComponent.h"
 #include "InputComponent.h"
-#include "SpriteComponent.h"
-#include "AnimationComponent.h"
 
-#include "InputSystem.h"
-#include "RenderSystem.h"
-#include "AnimationSystem.h"
 
 enum GameStatus
 {
@@ -38,12 +28,10 @@ private:
 
     // Others
     KeyboardKeys currentKey;
+
     // ------------------------------------
     // Configuration and utility functions
-
     void configure();
-    void initEntityAnimation(uint entityID, std::string fullfilename, uint init_x, uint init_y, uint xsize, uint ysize, uint framesAmount);
-
 public:
     Game();
     ~Game();

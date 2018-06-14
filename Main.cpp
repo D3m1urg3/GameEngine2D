@@ -1,3 +1,5 @@
+#include "SDL.h"
+#include <windows.h>
 #include "Game.h"
 
 #define MS_PER_FRAME 33 // 30 frames/sec

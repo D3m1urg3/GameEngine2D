@@ -3,13 +3,13 @@
 
 #include "ECS.h"
 #include "SDL.h"
+#include "SDLUtils.h"
 #include <string>
 #include "Globals.h"
 
 struct Sprite
 {
-    bool            isInit      = false;
-    SDL_Surface*    sdl_surface = nullptr;
+    Texture*        texture     = nullptr;
     SDL_Rect*       src         = nullptr;
     SDL_Rect*       dst         = nullptr;
 };
@@ -17,7 +17,6 @@ struct Sprite
 class SpriteComponent : public Component
 {
 public:
-    bool    isLoaded = false;
     Sprite* sprite   = nullptr;
 };
 
