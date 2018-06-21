@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include "RenderSystem.h"
 #include "SpriteComponent.h"
+#include "SDLUtils.h"
 
 RenderSystem::RenderSystem(EntityManager& em, const std::string& windowName, uint xpos, uint ypos, uint xsize, uint ysize)
     :System(em),
@@ -20,19 +21,9 @@ RenderSystem::RenderSystem(EntityManager& em, const std::string& windowName, uin
 
 RenderSystem::~RenderSystem()
 {
-    for (uint id = 0, entityCount = emanager->entityCount(); id < entityCount; ++id)
-    {
-        if (emanager->isEntityActive(id) && emanager->entityHasComponent<SpriteComponent>(id))
-        {
-            SpriteComponent& spriteCmp = emanager->getComponentFromEntity<SpriteComponent>(id);
-            delete spriteCmp.sprite->src;
-            delete spriteCmp.sprite->dst;
-            delete spriteCmp.sprite;
-        }
-    }
     SDL_FreeSurface(screen);
     SDL_DestroyWindow(window);
-    SDL_Quit;
+    SDL_Quit();
 }
 
 bool RenderSystem::initWindowAndScreen(const std::string& name, uint xpos, uint ypos, uint xsize, uint ysize)

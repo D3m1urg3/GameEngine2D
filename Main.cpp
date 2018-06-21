@@ -1,5 +1,6 @@
 #include "SDL.h"
 #include <windows.h>
+#include "Globals.h"
 #include "Game.h"
 
 #define MS_PER_FRAME 33 // 30 frames/sec
@@ -10,11 +11,14 @@ void sleep(long ms);
 int main(int argc, char* argv[])
 {
     Game game;
-    while (GAME_FINISHED != game.getStatus())
+    if (game.init())
     {
-        long frame_start_time = getCurrentTime();
-        game.update();
-        sleep(frame_start_time + MS_PER_FRAME - getCurrentTime());
+        while (GAME_FINISHED != game.getStatus())
+        {
+            long frame_start_time = getCurrentTime();
+            game.update();
+            sleep(frame_start_time + MS_PER_FRAME - getCurrentTime());
+        }
     }
 
     return 0;

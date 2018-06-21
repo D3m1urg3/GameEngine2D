@@ -4,8 +4,8 @@
 #include <string>
 #include "ECS.h"
 
-class SDL_Window;
-class SDL_Surface;
+struct SDL_Window;
+struct SDL_Surface;
 class SpriteComponent;
 
 class RenderSystem : public System

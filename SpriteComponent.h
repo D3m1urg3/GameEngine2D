@@ -2,10 +2,8 @@
 #define __SPRITE_COMPONENT__
 
 #include "ECS.h"
-#include "SDL.h"
-#include "SDLUtils.h"
-#include <string>
-#include "Globals.h"
+class Texture;
+struct SDL_Rect;
 
 struct Sprite
 {
@@ -17,7 +15,7 @@ struct Sprite
 class SpriteComponent : public Component
 {
 public:
-    Sprite* sprite   = nullptr;
+    Sprite* sprite;
 };
 
 #endif

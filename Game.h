@@ -17,6 +17,7 @@ enum GameStatus
 class Game
 {
 private:
+    bool ok;
     GameStatus status;
 
     // Entities
@@ -35,11 +36,12 @@ private:
 public:
     Game();
     ~Game();
+    bool init();
+    void end();
+
+    inline bool isOk() const { return ok; }
 
     inline const GameStatus& getStatus() const { return status; }
-    
-    bool init();
-    bool destroy();
 
     void update();
 };

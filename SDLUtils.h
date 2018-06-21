@@ -1,24 +1,22 @@
 #ifndef __SDL_UTILS__
 #define __SDL_UTILS__
 
-#include "SDL.h"
-#include <string>
+template <class T> 
+class SharedPtr;
 
 // Texture wrapper class
 class Texture
 {
-private:
-    SDL_Surface* surface;
 public:
     Texture();
+    Texture(const std::string& fullfilename);
     ~Texture();
 
-    inline bool isLoaded() const { return surface != nullptr; }
-    inline SDL_Surface* getSDLSurface() { return surface; }
+    inline bool isLoaded() const { return surface.get() != nullptr; }
+    inline SDL_Surface* getSDLSurface() { return surface.get(); }
 
-    bool load(std::string fullfilename);
-    
+    bool load(const std::string& fullfilename);
+private:
+    SharedPtr<SDL_Surface> surface;
 };
-
-
 #endif

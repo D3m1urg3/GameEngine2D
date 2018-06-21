@@ -12,27 +12,26 @@
 #include "RenderSystem.h"
 #include "AnimationSystem.h"
 
+#include "SDLUtils.h"
+
 Game::Game()
     :status(GAME_INITIALIZING),
-    inputListener(nullptr)
+    inputListener(nullptr),
+    ok(false)
 {
-    if (init())
-    {
-        status = GAME_RUNNING;
-    }
-    else
-    {
-        status = GAME_FINISHED;
-    }
 }
 
 Game::~Game()
 {
-    destroy();
+    end();
 }
 
 bool Game::init()
 {
+    bool ret = true;
+    end();
+    ok = true;
+
     // Create Systems
     InputSystem*        inputSystem     = new InputSystem(emanager); 
     RenderSystem*       renderSystem    = new RenderSystem(emanager, "Game", 100, 100, 300, 300);
@@ -42,19 +41,37 @@ bool Game::init()
     systems.push_back(inputSystem);
     systems.push_back(renderSystem);
 
-    // Run configuration
-    configure();
-
-    return true;
-}
-
-void Game::configure()
-{
     // Create input listener entity. This entity purpose is for the Game to be able to end due to keyboard input
     Entity& listener = emanager.addEntity();
     emanager.addComponentToEntity<InputComponent>(listener.id);
     inputListener = &listener;
 
+    // Configuration
+    configure();
+
+    status = GameStatus::GAME_RUNNING;
+
+    if (!ret)
+    {
+        end();
+    }
+    return ret;
+}
+
+void Game::end()
+{
+    if (ok)
+    {
+        for (auto& systemPtr : systems)
+        {
+            DELETE(systemPtr);
+        }
+        ok = false;
+    }
+}
+
+void Game::configure()
+{
     // Test entity
     Entity& e = emanager.addEntity();
     InputComponent&     einput      = emanager.addComponentToEntity<InputComponent>(e.id);
@@ -65,15 +82,6 @@ void Game::configure()
     etransform.ypos = 0;
 }
 
-bool Game::destroy()
-{
-    for (auto& systemPtr : systems)
-    {
-        delete systemPtr;
-    }
-
-    return true;
-}
 
 void Game::update()
 {
@@ -98,5 +106,3 @@ void Game::update()
         }
     }
 }
-
-// Utils
