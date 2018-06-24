@@ -28,7 +28,6 @@ Game::~Game()
 
 bool Game::init()
 {
-    bool ret = true;
     end();
     ok = true;
 
@@ -51,11 +50,11 @@ bool Game::init()
 
     status = GameStatus::GAME_RUNNING;
 
-    if (!ret)
+    if (!ok)
     {
         end();
     }
-    return ret;
+    return ok;
 }
 
 void Game::end()

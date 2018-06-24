@@ -36,7 +36,8 @@ constexpr std::size_t   maxComponents   = 32;
 using ComponentBitSet = std::bitset<maxComponents>;
 using ComponentArray = std::array<Component*, maxComponents>;
 
-class Component
+class Component 
+//Managed by EntityManager
 {
 public:
     Component() {}
@@ -46,6 +47,7 @@ public:
 };
 
 class Entity
+//Managed by EntityManager
 {
 public:
     uint  id;
@@ -58,9 +60,6 @@ public:
 
 class EntityManager
 {
-private:
-    std::vector <std::unique_ptr<Entity>> entities;
-
 public:
     EntityManager() {}
     ~EntityManager() {}
@@ -109,6 +108,8 @@ public:
         const Entity& e = getEntity(entityID);
         return e.componentBitSet[getComponentTypeID<T>()];
     }
+private:
+    std::vector <std::unique_ptr<Entity>> entities;
 };
 
 class System
@@ -119,6 +120,8 @@ protected:
 public:
     System(EntityManager& em);
     virtual ~System() {}
+    virtual bool init() = 0;
+    virtual void end()  = 0;
 
     bool isActive()                       const { return active; }
 

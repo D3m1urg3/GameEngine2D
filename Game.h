@@ -16,6 +16,17 @@ enum GameStatus
 
 class Game
 {
+public:
+    Game();
+    ~Game();
+    bool init();
+    void end();
+
+    inline bool isOk() const { return ok; }
+
+    inline const GameStatus& getStatus() const { return status; }
+
+    void update();
 private:
     bool ok;
     GameStatus status;
@@ -33,17 +44,6 @@ private:
     // ------------------------------------
     // Configuration and utility functions
     void configure();
-public:
-    Game();
-    ~Game();
-    bool init();
-    void end();
-
-    inline bool isOk() const { return ok; }
-
-    inline const GameStatus& getStatus() const { return status; }
-
-    void update();
 };
 
 #endif

@@ -10,6 +10,8 @@ class EntityManager;
 class InputSystem : public System
 {
 private:
+    bool ok;
+
     KeyboardKeys lastKeyDown;
     KeyboardKeys lastKeyUp;
 
@@ -17,7 +19,10 @@ private:
     KeyboardKeys& translateKey(const SDL_Keycode& k) const;
 public:
     InputSystem(EntityManager& em);
-    ~InputSystem() {}
+    ~InputSystem();
+
+    bool init() override;
+    void end() override;
 
     void update() override;
 };

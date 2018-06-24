@@ -27,11 +27,7 @@ public:
 
     ~SharedPtr()
     {
-        if (--*_pRefs == 0)
-        {
-            DELETE(_p);
-            DELETE(_pRefs);
-        }
+        free();
     }
 
     SharedPtr(const SharedPtr& other)
@@ -62,6 +58,15 @@ public:
     // Other
     T* get() const { return _p; }
     bool isUnique() const { return *_pRefs == 1; }
+    bool isNull() const { return _p == nullptr; }
+    void free() 
+    {
+        if (--*_pRefs == 0)
+        {
+            DELETE(_p);
+            DELETE(_pRefs);
+        }
+    }
 
     void swap(SharedPtr& other) noexcept
     {
@@ -75,5 +80,4 @@ private:
 };
 // See: https://www.geeksforgeeks.org/smart-pointers-cpp/ 
 // and http://lokiastari.com/blog/2015/01/15/c-plus-plus-by-example-smart-pointer-part-ii/
-
 #endif

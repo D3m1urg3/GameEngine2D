@@ -7,23 +7,43 @@
 RenderSystem::RenderSystem(EntityManager& em, const std::string& windowName, uint xpos, uint ypos, uint xsize, uint ysize)
     :System(em),
     window(nullptr),
-    screen(nullptr)
+    screen(nullptr),
+    windowSizeX(xsize),
+    windowSizeY(ysize),
+    screenXPos(xpos),
+    screenYPos(ypos),
+    ok(false)
 {
-    Uint32 sdl_init_mask = SDL_INIT_EVERYTHING;
-    Uint32 is_sdl_video_init = sdl_init_mask & SDL_INIT_VIDEO;
-    if (!is_sdl_video_init)
-    {
-        SDL_Init(SDL_INIT_EVERYTHING);
-    }
+}
+
+bool RenderSystem::init()
+{
+    end();
+
+    ok = initSDLVideo() && initWindowAndScreen(windowName, screenXPos, screenYPos, windowSizeX, windowSizeY);
     activate();
-    initWindowAndScreen(windowName, xpos, ypos, xsize, ysize);
+
+    if (!ok)
+    {
+        end();
+    }
+    return ok;
+}
+
+void RenderSystem::end()
+{
+    if (ok)
+    {
+        SDL_FreeSurface(screen);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        ok = false;
+    }
 }
 
 RenderSystem::~RenderSystem()
 {
-    SDL_FreeSurface(screen);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
+    end();
 }
 
 bool RenderSystem::initWindowAndScreen(const std::string& name, uint xpos, uint ypos, uint xsize, uint ysize)

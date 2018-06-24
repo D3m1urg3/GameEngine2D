@@ -1,19 +1,36 @@
 
 #include "Globals.h"
+#include "SDLUtils.h"
 #include "InputSystem.h"
 
 InputSystem::InputSystem(EntityManager& em)
-    :System(em)
+    :System(em),
+    ok(false)
 {
-    // Init SDL if it is not already 
-    Uint32 sdl_init_mask = SDL_INIT_EVERYTHING;
-    Uint32 is_sdl_video_init = sdl_init_mask & SDL_INIT_VIDEO;
-    if (!is_sdl_video_init)
-    {
-        SDL_Init(SDL_INIT_EVERYTHING);
-    }
-    activate();
 }
+
+InputSystem::~InputSystem()
+{
+    end();
+}
+
+bool InputSystem::init()
+{
+    end();
+
+    ok = initSDLVideo();
+    activate();
+
+    if (!ok)
+    {
+        end();
+    }
+
+    return ok;
+}
+
+void InputSystem::end()
+{}
 
 void InputSystem::update()
 {       
